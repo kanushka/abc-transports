@@ -1,0 +1,38 @@
+apiVersion: core.choreo.dev/v1alpha1
+kind: ComponentConfig
+metadata:
+  name: user-management
+  projectName: abc-transport
+  annotations:
+    componentType: buildpackService
+spec:
+  inbound:
+    - name: user-management
+      port: 3000
+      type: REST
+      context: .
+      schemaFilePath: openapi.yaml
+  outbound:
+    serviceReferences:
+      - name: choreo:///apifirst/ewne/fefzob/5c69c/v1.0/ORGANIZATION
+        connectionConfig: default
+        env:
+          - from: ServiceURL
+            to: SERVICEURL
+          - from: ConsumerKey
+            to: CONSUMERKEY
+          - from: ConsumerSecret
+            to: CONSUMERSECRET
+          - from: TokenURL
+            to: TOKENUR
+      - name: choreo:///apifirst/ewne/fefzob/jdf7sdh/v1.0/ORGANIZATION
+        connectionConfig: default
+        env:
+          - from: ServiceURL
+            to: SERVICEURL
+          - from: ConsumerKey
+            to: CONSUMERKEY
+          - from: ConsumerSecret
+            to: CONSUMERSECRET
+          - from: TokenURL
+            to: TOKENUR

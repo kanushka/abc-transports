@@ -1,0 +1,14 @@
+apiVersion: core.choreo.dev/v1alpha1
+kind: ComponentConfig
+metadata:
+  name: payment-processing
+  projectName: abc-transport
+  annotations:
+    componentType: ballerinaService
+spec:
+  inbound:
+    - name: payment-processing
+      port: 3000
+      type: REST
+      context: .
+      schemaFilePath: openapi.yaml
